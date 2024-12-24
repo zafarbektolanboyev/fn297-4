@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function ShoppingList() {
   const [text, setText] = useState('');
+  const navigate = useNavigate()
 
   function copy() {
     navigator.clipboard.writeText(text)
@@ -13,6 +15,9 @@ function ShoppingList() {
       .catch(() => {
         toast.error('Failed to copy text!');
       });
+  }
+  function handleClick(){
+    navigate('/avatarcustomer')
   }
 
   return (
@@ -28,6 +33,7 @@ function ShoppingList() {
       <br />
       <input type="text" className='w-[300px] p-[15px] rounded-md'  placeholder='Paste text!'/>
       <ToastContainer />
+      <button className="mt-[50px] w-[350px] mx-auto p-[15px] rounded-md text-white bg-blue-500" onClick={handleClick}>Avatar Customer</button>
     </div>
   );
 }
